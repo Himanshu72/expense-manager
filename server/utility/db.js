@@ -18,9 +18,10 @@ const usermodel = mongoose.model("users", user);
 module.exports = {
     async insertUser(obj) {
         try {
-            
+            obj._id=obj.email;
             const userData = new usermodel(obj);
-            await userData.save();
+           let data= await userData.save();
+           return data;
         } catch (e) {
             throw e;
         }
@@ -37,14 +38,14 @@ module.exports = {
     async addCatagory(obj) {
         try {
 
-            let data = await usermodel.updateOne({ _id: obj.email }, { $addToSet: { catagory: obj.name } }, { new: true });
+            let data = await usermodel.findByIdAndUpdate({ _id: obj.email }, { $addToSet: { catagory: obj.category } }, { new: true });
             return data;
         } catch (e) {
             throw e;
         }
     }, async addExpense(obj) {
         try {
-            let data = await usermodel.updateOne({ _id: obj.email }, { $addToSet: { expense: obj } }, { new: true });
+            let data = await usermodel.findByIdAndUpdate({ _id: obj.email }, { $addToSet: { expense: obj } }, { new: true });
             return data;
         } catch (e) {
             throw e;

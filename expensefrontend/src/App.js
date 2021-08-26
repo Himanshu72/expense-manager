@@ -21,6 +21,7 @@ const authentication={
   }
 }
 
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
   {...rest}
