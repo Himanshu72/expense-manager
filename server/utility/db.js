@@ -45,7 +45,7 @@ module.exports = {
         }
     }, async addExpense(obj) {
         try {
-            let data = await usermodel.findByIdAndUpdate({ _id: obj.email }, { $addToSet: { expense: obj } }, { new: true });
+            let data = await usermodel.findByIdAndUpdate({ _id: obj.email }, { $push: { expense: obj } }, { new: true });
             return data;
         } catch (e) {
             throw e;

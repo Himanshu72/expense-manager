@@ -59,7 +59,7 @@ router.put("/addCategory",auth.verify,async (req,res)=>{
     }
 })
 
-router.put("/addExpense",async (req,res)=>{
+router.put("/addExpense",auth.verify,async (req,res)=>{
     try{
         req.body._id=req.body.category;
         let data= await utlit.addExpense(req.body);
