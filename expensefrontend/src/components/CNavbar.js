@@ -1,10 +1,19 @@
 
+import { PredictSingleFaceExpressionsWithFaceAlignmentTask } from 'face-api.js/build/commonjs/globalApi/PredictFaceExpressionsTask';
 import React from 'react'
 import { Navbar,Container,Nav,NavDropdown,Button } from 'react-bootstrap'
 import {Link} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 export default function CNavbar() {
+    const history=useHistory();
+let logout=()=>{
     
-  
+      localStorage.clear("token");
+      localStorage.clear("user");
+      history.push("/login");
+}  
+
+
   return (
             <div>
             <Navbar bg="light" expand="lg">
@@ -19,7 +28,8 @@ export default function CNavbar() {
         
       </Nav>
       <Nav>
-     <Button variant="danger  " >Logout</Button>
+     
+     <Button  onClick={logout}  variant="danger" >Logout</Button>
       
     </Nav>
     </Navbar.Collapse>

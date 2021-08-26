@@ -4,6 +4,7 @@ import CNavbar from './components/CNavbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Expense from './pages/Expense';
+ import { createContext } from 'react';
 import {
   Switch,Route,
   BrowserRouter as Router,
@@ -14,10 +15,10 @@ import {
 const authentication={
   isLoggedIn:false,
   Auth:()=>{
-    this.isLoggedIn=true
+    
   },
   getLoginStatus(){
-    return this.isLoggedIn;
+    return (localStorage.getItem("token")!=undefined);
   }
 }
 
@@ -38,11 +39,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   }
   />
   );
+
+
 function App() {
   return (
     <Router>
 
-<CNavbar />
+<CNavbar  />
       <Switch>
       
         <Route path="/login" component={Login} />

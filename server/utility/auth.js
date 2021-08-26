@@ -13,6 +13,7 @@ module.exports={
      },
     async  verify(req,res,next){
        try{
+          console.log(req.headers);
        let token=req.headers.token;
        if(!token)
         res.status(401).json({message: "token required", status: 401})

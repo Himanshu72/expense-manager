@@ -19,6 +19,7 @@ module.exports = {
     async insertUser(obj) {
         try {
             obj._id=obj.email;
+            console.log(obj)
             const userData = new usermodel(obj);
            let data= await userData.save();
            return data;
