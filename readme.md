@@ -3,6 +3,7 @@
     Backend:Nodejs,<br>
     Frontend: React,<br>
     Database:MongoDB,<br>
+    Auth:JWT,<br>
 </p>
 <h4>Setup Server</h4>
 <code>git clone  https://github.com/Himanshu72/expense-manager</code><br>
